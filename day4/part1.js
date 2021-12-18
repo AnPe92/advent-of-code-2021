@@ -18,6 +18,12 @@ let input = `
 18  8 23 26 20
 22 11 13  6  5
  2  0 12  3  7
+ 
+ 14 21 17 24  4
+10 16 15  9 19
+18  8 23 26 20
+22 11 13  6  5
+ 2  0 12  3  7
 `
 
 let getCardNumsReg = /[0-9]+/;
@@ -52,12 +58,14 @@ allpc = {
 	} */
 
 let allPlayCards = {};
-allPlayCards.card1 = {};
 
-for(let i = 0; i < 5; i++) {
+for(let i = 0; i < cardRowers.length / 5; i++) {
 	allPlayCards['card'+i] = {};
-	/* allPlayCards['card'+i].rows = []; */
-	allPlayCards['card'+i].rows.push(cardRowers[i]);
+	allPlayCards['card'+i].rows = [];
+	for(let j = 0; j < 5; j++){
+		allPlayCards['card'+i].rows.push(cardRowers[j+i*5]);
+	}
+	
 }
 
 console.log(allPlayCards);
